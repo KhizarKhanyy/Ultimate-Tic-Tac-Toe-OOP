@@ -1,6 +1,6 @@
 /*
 =============================================================
-  ULTIMATE TIC-TAC-TOE  —  Complete OOP Implementation
+  ULTIMATE TIC-TAC-TOE  â€”  Complete OOP Implementation
   File: UltimateTicTacToe.cpp   (Single file, no headers)
   
   Rules:
@@ -18,7 +18,7 @@
 using namespace std;
  
 // =============================================================
-//  CLASS: ticTacToe  —  Represents ONE small 3x3 board
+//  CLASS: ticTacToe  â€”  Represents ONE small 3x3 board
 // =============================================================
 class ticTacToe {
 private:
@@ -28,7 +28,7 @@ private:
 public:
  
     // ---------------------------------------------------------
-    // 1. CONSTRUCTOR — fills board with spaces (empty)
+    // 1. CONSTRUCTOR â€” fills board with spaces (empty)
     // ---------------------------------------------------------
     ticTacToe() {
         moves = 0;
@@ -38,7 +38,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 2. COPY CONSTRUCTOR — copies another board exactly
+    // 2. COPY CONSTRUCTOR â€” copies another board exactly
     // ---------------------------------------------------------
     ticTacToe(const ticTacToe& other) {
         moves = other.moves;
@@ -48,12 +48,12 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 3. DESTRUCTOR — nothing dynamic here, but required
+    // 3. DESTRUCTOR â€” nothing dynamic here, but required
     // ---------------------------------------------------------
     ~ticTacToe() {}
  
     // ---------------------------------------------------------
-    // 4. STREAM OUTPUT OPERATOR — prints one small board
+    // 4. STREAM OUTPUT OPERATOR â€” prints one small board
     //    row by row (called by UltimateTicTacToe's operator<<)
     // ---------------------------------------------------------
     // Returns one row of the board as a string for display
@@ -78,7 +78,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 5. GET MOVE — asks player for row and column
+    // 5. GET MOVE â€” asks player for row and column
     //    Returns true if move is valid and placed it
     // ---------------------------------------------------------
     bool getMove(char symbol) {
@@ -104,7 +104,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 6. IS VALID MOVE — checks bounds and if cell is empty
+    // 6. IS VALID MOVE â€” checks bounds and if cell is empty
     // ---------------------------------------------------------
     bool isValidMove(int row, int col) const {
         if (row < 0 || row > 2 || col < 0 || col > 2) {
@@ -119,7 +119,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 7. CHECK WINNER — checks rows, cols, diagonals
+    // 7. CHECK WINNER â€” checks rows, cols, diagonals
     //    Returns 'X', 'O', or ' ' (no winner)
     // ---------------------------------------------------------
     char checkWinner() const {
@@ -210,7 +210,7 @@ public:
     ~UltimateTicTacToe() {}
  
     // ---------------------------------------------------------
-    // 4. STREAM OUTPUT OPERATOR — prints all 9 boards
+    // 4. STREAM OUTPUT OPERATOR â€” prints all 9 boards
     //    in a 3x3 layout with dividers between them
     // ---------------------------------------------------------
     friend ostream& operator<<(ostream& out, const UltimateTicTacToe& u) {
@@ -225,7 +225,7 @@ public:
                 for (int bigCol = 0; bigCol < 3; bigCol++) {
                     char w = u.bigBoard[bigRow][bigCol];
                     if (w != ' ') {
-                        // Board already won — show big symbol
+                        // Board already won â€” show big symbol
                         if (smallRow == 1)
                             out << "   [  " << w << "  ]   ";
                         else
@@ -246,7 +246,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 5. GET MOVE — handles the ultimate game move logic
+    // 5. GET MOVE â€” handles the ultimate game move logic
     //    Considers the last opponent's move to decide
     //    which small board must be played
     // ---------------------------------------------------------
@@ -256,9 +256,9 @@ public:
         while (true) {
             // Determine which small board to play in
             if (nextBR == -1 || boards[nextBR][nextBC].isDone()) {
-                // Free choice — any available board
-                cout << "  Pick small board — row (1-3): "; cin >> br;
-                cout << "  Pick small board — col (1-3): "; cin >> bc;
+                // Free choice â€” any available board
+                cout << "  Pick small board â€” row (1-3): "; cin >> br;
+                cout << "  Pick small board â€” col (1-3): "; cin >> bc;
                 br--; bc--;
                 if (br < 0 || br > 2 || bc < 0 || bc > 2) {
                     cout << "  Invalid board! Try again.\n"; continue;
@@ -273,8 +273,8 @@ public:
             }
  
             // Get cell within that small board
-            cout << "  Pick cell — row (1-3): "; cin >> sr;
-            cout << "  Pick cell — col (1-3): "; cin >> sc;
+            cout << "  Pick cell â€” row (1-3): "; cin >> sr;
+            cout << "  Pick cell â€” col (1-3): "; cin >> sc;
             sr--; sc--;
  
             if (boards[br][bc].placeMove(sr, sc, currentPlayer)) {
@@ -294,11 +294,11 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 6. IS VALID MOVE — handled inside getMove() above
+    // 6. IS VALID MOVE â€” handled inside getMove() above
     // ---------------------------------------------------------
  
     // ---------------------------------------------------------
-    // 7. CHECK WINNER — checks the big board for 3 in a row
+    // 7. CHECK WINNER â€” checks the big board for 3 in a row
     // ---------------------------------------------------------
     char checkBigWinner() const {
         // Rows
@@ -336,7 +336,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 8a. SAVE GAME — writes full state to UltimateGame.txt
+    // 8a. SAVE GAME â€” writes full state to UltimateGame.txt
     // ---------------------------------------------------------
     void saveGame() const {
         ofstream file("UltimateGame.txt");
@@ -360,7 +360,7 @@ public:
     }
  
     // ---------------------------------------------------------
-    // 8b. LOAD GAME — reads state from UltimateGame.txt
+    // 8b. LOAD GAME â€” reads state from UltimateGame.txt
     // ---------------------------------------------------------
     bool loadGame() {
         ifstream file("UltimateGame.txt");
@@ -405,7 +405,7 @@ public:
  
  
 // =============================================================
-//  MAIN — Menu + Game Loop
+//  MAIN â€” Menu + Game Loop
 // =============================================================
 int main() {
     cout << "\n";
@@ -441,7 +441,7 @@ int main() {
             break;
         }
         if (game.isOver()) {
-            cout << "  *** All boards are done — it's a DRAW! ***\n\n";
+            cout << "  *** All boards are done â€” it's a DRAW! ***\n\n";
             break;
         }
  
